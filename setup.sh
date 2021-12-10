@@ -32,6 +32,13 @@ if [[ $? != 0 ]] ; then
   brew install the_silver_searcher
 fi
 
+# pyenv
+which -s pyenv
+if [[ $? != 0 ]] ; then
+  echo 'installing pyenv'
+  brew install pyenv
+fi
+
 ####### start moving the configs to the proper place
 if [[ ! -f ~/.zshrc ]] ; then 
   echo 'copying zshrc'

@@ -28,9 +28,17 @@ Plug 'raimondi/delimitmate'
 Plug 'alvan/vim-closetag'
 " used for indexing so we can find objects/functions/declarations easier
 Plug 'universal-ctags/ctags'
+" python formatting - NOTE: needs to run `pip3 install neovim --user` as user
+" also `pip3 install black` needs to be installed
+Plug 'psf/black', { 'commit': 'ce14fa8b497bae2b50ec48b3bd7022573a59cdb1' }
 
 " use :Ack to grep files using ag (instead of ack) in VIM
 Plug 'mileszs/ack.vim'
+" auto format the code as you save
+Plug 'chiel92/vim-autoformat'
+
+" using "w" to navigate with camalcase, snakecase, terms
+Plug 'bkad/CamelCaseMotion'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -51,9 +59,14 @@ nmap <leader>w :w!<cr>
 " map <space> with search
 map <space> /
 
+" search without case sensitivity
+set ignorecase
+
+""""""""""""""" Plugin Settings """"""""""""""""""
 " NERDTREE"
 map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
+
 
 """""""" onedark to work with nvim and tmux """""""
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -99,3 +112,14 @@ let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-tsserver', 'coc-pytho
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" ctrlp - ignore folders
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
+
+" do not support python 2 provider, for black to work
+let g:loaded_python_provider = 0
+let g:python_host_prog = ''
+
+" CamelCaseMotion leading character
+let g:camelcasemotion_key = '<'
