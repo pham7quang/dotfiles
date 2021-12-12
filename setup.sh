@@ -10,6 +10,7 @@ else
   echo 'updating brew'
   # brew update
 fi
+
   
 # setup tmux
 which -s tmux
@@ -43,8 +44,17 @@ if [[ ! -f ~/.tmux.conf ]] ; then
   cp .tmux.conf ~/.tmux.conf
 fi
 
-if [[ ! -f ~/.conf/nvim/init.vim ]] ; then 
+if [[ ! -f ~/.config/nvim/init.vim ]] ; then 
   echo 'copying init.vim'
-  mkdir -p ~/.conf/nvim
-  cp init.vim ~/.conf/nvim/init.vim
+  mkdir -p ~/.config/nvim
+  cp init.vim ~/.config/nvim/init.vim
+fi
+
+
+# install nvm
+which -s nvm
+if [[ $? != 0 ]] ; then
+  # TODO: didn't try the curl below, see if it works
+  echo 'installing nvm'
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 fi

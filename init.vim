@@ -32,6 +32,12 @@ Plug 'universal-ctags/ctags'
 " use :Ack to grep files using ag (instead of ack) in VIM
 Plug 'mileszs/ack.vim'
 
+" Black used for python, install using: pip install black
+Plug 'ambv/black'
+
+" Python linting and checks
+Plug 'w0rp/ale'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
